@@ -13,6 +13,12 @@ const getProductsByID = async (productID) => {
   return { type: null, message: product };
 };
 
-module.exports = { getProducts, getProductsByID };
+const createProduct = async (product) => {
+  const response = await productsModel.createProduct(product);
+
+  return { type: null, message: response };
+};
+
+module.exports = { getProducts, getProductsByID, createProduct };
 
 // I wrote the functions in this file with the mentorship of Henrique Baeta
