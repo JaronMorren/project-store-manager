@@ -13,7 +13,7 @@ describe('test productsModel', () => {
 // Assert
     expect(result).to.be.deep.equal(productsMock);
   })
-  it('if products are listed when ID parameter is supplied with request', async () => {
+  it('if product with correct ID is received', async () => {
 // Arrange
     sinon.stub(connection, 'execute').resolves([[productsMock[0]]]);
 // Act
