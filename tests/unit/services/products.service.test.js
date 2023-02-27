@@ -13,7 +13,7 @@ describe('test productsService', () => {
     const result = await productsService.getProducts();
     // Assert
     expect(result.type).to.be.equal(null);
-    expect(result.message).to.be.deep.equal(productsMock);
+    expect(result.message).to.be.equal(productsMock);
   });
   it('if product with correct ID is received', async () => {
     // Arrange
@@ -23,6 +23,15 @@ describe('test productsService', () => {
     // Assert
     expect(result.type).to.be.equal(null);
     expect(result.message).to.be.equal(productsMock);
+  });
+  it('if error is received when an incorrect ID is used', async () => {
+        // Arrange
+    sinon.stub(productsModel, 'getByID').resolves(productsMock);
+    // Act
+    const result = await productsService.getProductsByID(13);
+    // Assert
+    expect(result.type).to.be.equal('PRODUCT_NOT_FOUND');
+    expect(result.message).to.be.equal('Product not found');
   });
   afterEach(function () {
     sinon.restore();
