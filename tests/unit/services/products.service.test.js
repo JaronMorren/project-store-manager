@@ -33,6 +33,15 @@ describe('test productsService', () => {
     expect(result.type).to.be.equal(404);
     expect(result.message).to.be.equal('Product not found');
   });
+  it('if a new product is successfully created', async function () {
+    // Arrange
+    sinon.stub(productsModel, 'createProduct').resolves({ id: 4, name: 'Xablau' })
+    // Act
+    const result = await productsService.createProduct(2);
+    // Assert
+    expect(result.type).to.be.equal(null);
+    expect(result.message).to.deep.equal({ id: 4, name: 'Xablau' });
+  })
   afterEach(function () {
     sinon.restore();
   });

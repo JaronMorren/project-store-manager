@@ -56,6 +56,24 @@ describe('test productsController', () => {
     expect(response.status).to.have.been.calledWith(404);
     expect(response.json).to.have.been.calledWith({ message: 'Product not found' });
   });
+  it('if a new product is successfully created', async function () {
+    // Arrange
+    const response = {
+      body: {
+        name: 'Xablau'
+      }
+    };
+    const request = {};
+
+    response.status = sinon.stub().returns(response);
+    response.json = sinon.stub().returns(response);
+    sinon.stub(productsService, 'createProduct').resolves({ type: 201, message: { id: 4, name: 'Xablau' } });
+    // Act
+    await productsController.createProduct(request, response);
+    // Assert
+    expect(response.status).to.have.been.calledWith(201);
+    expect(response.json).to.have.been.calledWith({ message: { id: 4, name: 'Xablau' } });
+  });
   afterEach(function () {
     sinon.restore();
   });
