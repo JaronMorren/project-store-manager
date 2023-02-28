@@ -41,6 +41,21 @@ describe('test productsController', () => {
     expect(response.json).to.have.been.calledWith(productsMock[0]);
 
   });
+  it('if error is received when product does not exist', async function () {
+    // Arrange
+    const response = {};
+    const request = {
+      params: { id: 666 },
+    };
+    response.status = sinon.stub().returns(response);
+    response.json = sinon.stub().returns(response);
+    sinon.stub(productsService, 'getProductsByID').resolves({ type: 404, message: 'Product not found' });
+    // Act
+    await productsController.getProductsByID(request, response);
+    // Assert
+    expect(response.status).to.have.been.calledWith(404);
+    expect(response.json).to.have.been.calledWith({ message: 'Product not found' });
+  });
   afterEach(function () {
     sinon.restore();
   });

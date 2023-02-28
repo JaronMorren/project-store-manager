@@ -25,10 +25,11 @@ describe('test productsService', () => {
     expect(result.message).to.deep.equal(productsMock);
   });
   it('if error is received when product does not exist', async function () {
+    // Arrange
     sinon.stub(productsModel, 'getByID').resolves({ message: 'Product not found' });
-
+    // Act
     const result = await productsService.getProductsByID(666);
-
+    // Assert
     expect(result.type).to.be.equal(404);
     expect(result.message).to.be.equal('Product not found');
   });
