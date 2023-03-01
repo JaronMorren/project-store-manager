@@ -28,4 +28,11 @@ const updateProduct = async (name, id) => {
 };
 // Thaís Gonzaga helped me to fix this function
 
-module.exports = { getProducts, getProductsByID, createProduct, updateProduct };
+const deleteProduct = async (id) => {
+  const product = await productsModel.getByID(id);
+  if (!product.length) return { type: 404, message: 'Product not found' };
+  const deletedProduct = await productsModel.deleteProduct(id);
+  return { type: null, message: deletedProduct };
+};
+
+module.exports = { getProducts, getProductsByID, createProduct, updateProduct, deleteProduct };

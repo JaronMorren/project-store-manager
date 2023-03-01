@@ -18,6 +18,7 @@ const getProductsByID = async (request, response) => {
 
   return response.status(200).json(message[0]);
 };
+// I wrote the functions in this file with the mentorship of Marcio Daniel
 
 const createProduct = async (request, response) => {
   const product = request.body;
@@ -39,11 +40,17 @@ const updateProduct = async (request, response) => {
   return response.status(200).json(message);
 };
 
+const deleteProduct = async (request, response) => {
+  const { id } = request.params;
+  const { type, message } = await productsService.deleteProduct(id);
+  if (type) return response.status(404).json({ message });
+  return response.status(204).json();
+};
+
 module.exports = {
   getProducts,
   getProductsByID,
   createProduct,
   updateProduct,
+  deleteProduct,
 };
-
-// I wrote the functions in this file with the mentorship of Marcio Daniel

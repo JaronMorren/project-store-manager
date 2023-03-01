@@ -14,6 +14,7 @@ const getByID = async (productID) => {
 
   return result;
 };
+// I wrote the functions in this file with the mentorship of Henrique Baeta
 
 const createProduct = async ({ name }) => {
   const [{ insertId: createID }] = await connection.execute(
@@ -30,11 +31,19 @@ const updateProduct = async ({ name, id }) => {
   );
   return { id, name };
 };
+
+const deleteProduct = async (id) => {
+  await connection.execute(
+
+    `DELETE FROM StoreManager.products
+    WHERE id = ?`, [id],
+  );
+};
+
 module.exports = {
   getAll,
   getByID,
   createProduct,
   updateProduct,
+  deleteProduct,
 };
-
-// I wrote the functions in this file with the mentorship of Henrique Baeta
