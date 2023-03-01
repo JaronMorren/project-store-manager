@@ -12,6 +12,7 @@ const getProductsByID = async (productID) => {
   if (!product.length) return { type: 404, message: 'Product not found' };
   return { type: null, message: product };
 };
+// I wrote the functions in this file with the mentorship of Henrique Baeta
 
 const createProduct = async (product) => {
   const response = await productsModel.createProduct(product);
@@ -21,11 +22,10 @@ const createProduct = async (product) => {
 
 const updateProduct = async (name, id) => {
   const product = await productsModel.getByID(id);
-  if (product === undefined) return { type: 404, message: 'Product not found' };
+  if (product.length === 0) return { type: 404, message: 'Product not found' };
   const updatedProduct = await productsModel.updateProduct({ name, id });
   return { type: null, message: updatedProduct };
 };
+// Thaís Gonzaga helped me to fix this function
 
 module.exports = { getProducts, getProductsByID, createProduct, updateProduct };
-
-// I wrote the functions in this file with the mentorship of Henrique Baeta
