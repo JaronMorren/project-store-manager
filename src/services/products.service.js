@@ -19,6 +19,13 @@ const createProduct = async (product) => {
   return { type: null, message: response };
 };
 
-module.exports = { getProducts, getProductsByID, createProduct };
+const updateProduct = async (name, id) => {
+  const product = await productsModel.getByID(id);
+  if (product === undefined) return { type: 404, message: 'Product not found' };
+  const updatedProduct = await productsModel.updateProduct({ name, id });
+  return { type: null, message: updatedProduct };
+};
+
+module.exports = { getProducts, getProductsByID, createProduct, updateProduct };
 
 // I wrote the functions in this file with the mentorship of Henrique Baeta

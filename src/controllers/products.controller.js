@@ -30,10 +30,20 @@ const createProduct = async (request, response) => {
   return response.status(201).json(message);
 };
 
+const updateProduct = async (request, response) => {
+  const { id } = request.params;
+  const { name } = request.body;
+
+  const { type, message } = await productsService.updateProduct(name, id);
+  if (type) return response.status(404).json({ message });
+  return response.status(200).json(message);
+};
+
 module.exports = {
   getProducts,
   getProductsByID,
   createProduct,
+  updateProduct,
 };
 
 // I wrote the functions in this file with the mentorship of Marcio Daniel
