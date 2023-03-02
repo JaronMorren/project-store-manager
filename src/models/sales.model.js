@@ -8,7 +8,6 @@ const getSales = async () => {
     ON sales_products.sale_id = sales.id
     ORDER BY saleId, productId`,
   );
-  console.log(sales);
   return (sales);
 };
 
@@ -21,7 +20,6 @@ const getSalesByID = async (id) => {
     WHERE sales.id = ?`,
     [id],
   );
-  console.log(sales);
   return (sales);
 };
 
