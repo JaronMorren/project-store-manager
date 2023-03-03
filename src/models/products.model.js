@@ -14,7 +14,6 @@ const getByID = async (productID) => {
 
   return result;
 };
-// I wrote the functions in this file with the mentorship of Henrique Baeta
 
 const createProduct = async ({ name }) => {
   const [{ insertId: createID }] = await connection.execute(
@@ -23,6 +22,7 @@ const createProduct = async ({ name }) => {
   );
   return { id: createID, name };
 };
+// I wrote the functions in this file with the mentorship of Henrique Baeta
 
 const updateProduct = async ({ name, id }) => {
   await connection.execute(
@@ -47,3 +47,4 @@ module.exports = {
   updateProduct,
   deleteProduct,
 };
+// https://github.com/CarolinaKauark/msc-do-zero/blob/solved-exercise/src/models/person.model.js

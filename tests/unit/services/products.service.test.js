@@ -48,3 +48,4 @@ describe('test productsService', () => {
 });
 
 //https://github.com/tryber/msc-architecture-trybecar/blob/simple-application-service-live-lectures/tests/unit/services/passenger.service.test.js
+//https://github.com/CarolinaKauark/msc-do-zero/blob/solved-exercise/src/tests/unit/services/person.service.test.js

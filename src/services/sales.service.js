@@ -17,3 +17,5 @@ module.exports = {
   getSales,
   getSalesByID,
 };
+
+// https://github.com/CarolinaKauark/msc-do-zero/blob/solved-exercise/src/services/person.service.js

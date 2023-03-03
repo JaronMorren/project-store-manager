@@ -36,3 +36,5 @@ const deleteProduct = async (id) => {
 };
 
 module.exports = { getProducts, getProductsByID, createProduct, updateProduct, deleteProduct };
+
+// https://github.com/CarolinaKauark/msc-do-zero/blob/solved-exercise/src/services/person.service.js

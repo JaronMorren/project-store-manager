@@ -35,3 +35,4 @@ describe('test productsModel', () => {
 });
 
 //https://github.com/tryber/msc-architecture-trybecar/blob/simple-application-service-live-lectures/tests/unit/models/passenger.model.test.js
+// https://github.com/CarolinaKauark/msc-do-zero/blob/solved-exercise/src/tests/unit/models/person.model.test.js

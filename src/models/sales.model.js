@@ -22,7 +22,7 @@ const getSalesByID = async (id) => {
   );
   return (sales);
 };
-
+// I wrote the functions in this file with the mentorship of Ronald Lima
 module.exports = {
   getSales,
   getSalesByID,

@@ -36,6 +36,7 @@ const updateProduct = async (request, response) => {
   const { name } = request.body;
 
   const { type, message } = await productsService.updateProduct(name, id);
+  
   if (type) return response.status(404).json({ message });
   return response.status(200).json(message);
 };
@@ -43,6 +44,7 @@ const updateProduct = async (request, response) => {
 const deleteProduct = async (request, response) => {
   const { id } = request.params;
   const { type, message } = await productsService.deleteProduct(id);
+
   if (type) return response.status(404).json({ message });
   return response.status(204).json();
 };
@@ -54,3 +56,4 @@ module.exports = {
   updateProduct,
   deleteProduct,
 };
+// https://github.com/CarolinaKauark/msc-do-zero/blob/solved-exercise/src/controllers/person.controller.js
